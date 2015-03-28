@@ -10,10 +10,14 @@ then
     read OVERWRITEDOTVIM
     if [ $OVERWRITEDOTVIM == "y" ]
     then
-        mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-        cd ~/.vim/bundle && git clone https://github.com/scrooloose/syntastic.git
+	continue
+    else
+	exit 1
     fi
 fi
+
+mkdir -p ~/.vim/autoload ~/.vim/bundle && wget -q https://tpo.pe/pathogen.vim -O ~/.vim/autoload/pathogen.vim 
+cd ~/.vim/bundle && git clone https://github.com/scrooloose/syntastic.git
 
 if [ -e $DOTVIMRC ]
 then
@@ -21,8 +25,11 @@ then
     read OVERWRITEDOTVIMRC
     if [ $OVERWRITEDOTVIMRC == "y" ]
     then
-        cp $SAVEPATH/.vimrc $DOTVIMRC
-    fi
+	continue
+    else
+	exit 1
+    fi 
 fi
+cp $SAVEPATH/.vimrc $DOTVIMRC
 
 
