@@ -8,11 +8,9 @@ if [ -e $DOTVIM ]
 then
     echo "Folder $DOTVIM exists, continue? [y/n]"
     read OVERWRITEDOTVIM
-    if [ $OVERWRITEDOTVIM == "y" ]
+    if [ ! $OVERWRITEDOTVIM == "y" ]
     then
-	continue
-    else
-	exit 1
+	    exit 1
     fi
 fi
 
@@ -23,11 +21,9 @@ if [ -e $DOTVIMRC ]
 then
     echo "File $DOTVIMRC exists, continue [y/n]"
     read OVERWRITEDOTVIMRC
-    if [ $OVERWRITEDOTVIMRC == "y" ]
+    if [ ! $OVERWRITEDOTVIMRC == "y" ]
     then
-	continue
-    else
-	exit 1
+	    exit 1
     fi 
 fi
 cp $SAVEPATH/.vimrc $DOTVIMRC
